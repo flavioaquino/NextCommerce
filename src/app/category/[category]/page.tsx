@@ -6,6 +6,7 @@ import { useQuery } from 'react-query';
 import axios from 'axios';
 import Header from '@/app/components/Header';
 import { useCart } from '@/app/context/CartContext';
+import { useRouter } from 'next/navigation';
 
 interface Product {
   id: number;
@@ -22,6 +23,7 @@ const fetchProductsByCategory = async (category: string): Promise<Product[]> => 
 const CategoryPage: React.FC = () => {
   const { category } = useParams() as { category: string };
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const router = useRouter();
   const { data: products, isLoading, error } = useQuery<Product[]>(
     ['productsByCategory', category],
     () => fetchProductsByCategory(category)
@@ -35,6 +37,10 @@ const CategoryPage: React.FC = () => {
 
   const handleClosePopup = () => {
     setSelectedImage(null);
+  };
+
+  const handleProductClick = (id: number) => {
+    router.push(`/product/${id}`);
   };
 
   const handleAddToCart = (product: Product) => {
@@ -69,8 +75,8 @@ const CategoryPage: React.FC = () => {
                 onClick={() => handleImageClick(product.image)}
               />
               <div className="absolute bottom-0 left-0 w-full p-4 bg-white bg-opacity-75">
-                <h2 className="text-center text-lg font-semibold text-gray-800">{product.title}</h2>
-                <div className="text-center mt-2">
+                <h2 className="text-center text-lg font-semibold cursor-pointer text-gray-800" onClick={() => handleProductClick(product.id)}>{product.title}</h2>
+                <div className="text-center mt-2 cursor-pointer" onClick={() => handleProductClick(product.id)}>
                   <span className="line-through text-gray-500 text-lg">R$ {priceOld}</span>
                   <span className="ml-2 text-lg font-semibold text-red-800">R$ {product.price.toFixed(2)}</span>
                 </div>
