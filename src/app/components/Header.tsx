@@ -1,42 +1,35 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+'use client';
+
+import React from 'react';
+import { useRouter } from 'next/navigation';
+import { useCart } from '@/app/context/CartContext';
 
 const Header: React.FC = () => {
-  const [categories, setCategories] = useState<string[]>([]);
+  const { cart } = useCart();
+  const router = useRouter();
 
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const { data } = await axios.get('https://fakestoreapi.com/products/categories');
-        setCategories(data);
-      } catch (error) {
-        console.error('Failed to fetch categories:', error);
-      }
-    };
-
-    fetchCategories();
-  }, []);
+  const handleCartClick = () => {
+    router.push('/cart');
+  };
 
   return (
-    <header className="bg-gray-900 text-white p-6 flex justify-between items-center font-bold">
+    <header className="bg-gray-800 text-white p-6 fixed top-0 left-0 w-full flex justify-between items-center font-bold z-50">
       <div className="text-xl font-bold">
         <a href="/">NextCommerce</a>
       </div>
       <nav>
-        <ul className="flex space-x-4 capitalize">
-          {categories.map(category => (
-            <li key={category}>
-              <a href={`/category/${encodeURIComponent(category)}`}>{category}</a>
-            </li>
-          ))}
-        </ul>
+        <a href="/category">Categories</a>
       </nav>
       <div className="flex items-center space-x-4">
         <a href="#">Login</a>
-        <a href="#" className="relative">
+        <button onClick={handleCartClick} className="relative">
           <img src="https://img.icons8.com/?size=100&id=85383&format=png&color=FFFFFF" alt="Cart" className='w-8' />
-          <span className="absolute top-0 right-0 inline-block w-2 h-2 bg-red-600 rounded-full"></span>
-        </a>
+          {cart.length > 0 && (
+            <span className="absolute top-0 right-0 inline-block w-4 h-4 bg-red-600 text-white text-xs font-semibold rounded-full flex items-center justify-center">
+              {cart.length}
+            </span>
+          )}
+        </button>
       </div>
     </header>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { QueryClientProvider } from 'react-query';
-import queryClient from '@/app/utils/queryClient';
+import queryClient from '@/app/queryClient';
 import { CartProvider } from '@/app/context/CartContext';
 import '@/app/styles/globals.css';
 
