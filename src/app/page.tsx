@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import ProductCategory from '@/app/components/ProductCategory';
-import Header from '@/app/components/Header';
+import ProductCategory from '../app/components/ProductCategory';
+import Header from '../app/components/Header';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import ProductSection from './components/ProductSection';

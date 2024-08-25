@@ -2,8 +2,8 @@
 
 import { useParams } from 'next/navigation'; // Para Next.js 13+ com roteamento de app
 import React, { useEffect, useState } from 'react';
-import Header from '@/app/components/Header';
-import { useCart } from '@/app/context/CartContext'; // Importar useCart para adicionar ao carrinho
+import Header from '../../../app/components/Header';
+import { useCart } from '../../../app/context/CartContext'; // Importar useCart para adicionar ao carrinho
 
 type Product = {
   id: number;

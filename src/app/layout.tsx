@@ -1,9 +1,10 @@
 "use client";
 
 import { QueryClientProvider } from 'react-query';
-import queryClient from '@/app/queryClient';
-import { CartProvider } from '@/app/context/CartContext';
-import '@/app/styles/globals.css';
+import queryClient from '../app/queryClient';
+import { CartProvider } from '../app/context/CartContext';
+import '../app/styles/globals.css';
+import React from 'react';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

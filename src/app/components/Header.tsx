@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useCart } from '@/app/context/CartContext';
+import { useCart } from '../../app/context/CartContext';
 
 const Header: React.FC = () => {
   const { cart } = useCart();

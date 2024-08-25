@@ -1,0 +1,54 @@
+.
+├── LICENSE
+├── README.md
+├── babel.config.js
+├── estrutura_diretorio.txt
+├── jest.config.ts
+├── jest.setup.ts
+├── next-env.d.ts
+├── next.config.mjs
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── public
+│   ├── next.svg
+│   └── vercel.svg
+├── src
+│   └── app
+│       ├── __tests__
+│       │   ├── CartContext.test.tsx
+│       │   ├── Home.test.tsx
+│       │   └── ProductDetails.test.tsx
+│       ├── cart
+│       │   └── page.tsx
+│       ├── category
+│       │   ├── [category]
+│       │   │   └── page.tsx
+│       │   └── page.tsx
+│       ├── components
+│       │   ├── Header.tsx
+│       │   ├── ProductCategory.tsx
+│       │   ├── ProductList.tsx
+│       │   └── ProductSection.tsx
+│       ├── context
+│       │   └── CartContext.tsx
+│       ├── favicon.ico
+│       ├── hooks
+│       │   ├── useCategories.ts
+│       │   └── useProducts.ts
+│       ├── layout.tsx
+│       ├── page.tsx
+│       ├── pages
+│       │   └── _app.tsx
+│       ├── product
+│       │   └── [product]
+│       │       └── page.tsx
+│       ├── queryClient.js
+│       ├── styles
+│       │   └── globals.css
+│       └── utils
+│           └── api.ts
+├── tailwind.config.ts
+└── tsconfig.json
+
+15 directories, 36 files
