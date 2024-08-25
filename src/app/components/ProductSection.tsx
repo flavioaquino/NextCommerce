@@ -10,14 +10,33 @@ type Product = {
   image: string;
 };
 
+// Hook para detectar o tamanho da tela
+const useMediaQuery = (query: string) => {
+  const [matches, setMatches] = useState<boolean>(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(query);
+    setMatches(mediaQuery.matches);
+
+    const handleChange = () => setMatches(mediaQuery.matches);
+
+    mediaQuery.addEventListener('change', handleChange);
+
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, [query]);
+
+  return matches;
+};
+
 type ProductCarouselProps = {
   products: Product[];
 };
 
 const ProductCarousel: React.FC<ProductCarouselProps> = ({ products }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const itemsToShow = 5;
+  const isMobile = useMediaQuery('(max-width: 768px)'); // Ajuste o breakpoint conforme necessário
+  const itemsToShow = isMobile ? 1 : 5; // Mostrar 1 item em telas pequenas, 5 itens em telas grandes
   const itemsCount = products.length;
+  const [currentIndex, setCurrentIndex] = useState(0);
   const router = useRouter();
 
   const handleNext = () => {
@@ -44,17 +63,28 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({ products }) => {
     return () => clearInterval(interval);
   }, [currentIndex]);
 
+  const itemWidth = isMobile ? `calc(100% - 32px)` : `calc(100% / ${itemsToShow} - 32px)`;
+  const containerWidth = isMobile ? `100%` : `${itemsCount * (25 / itemsToShow)}%`;
+
   return (
     <div id="default-carousel" className="relative w-full px-8 py-4 overflow-hidden">
       <div
         className="relative flex transition-transform duration-700 ease-in-out"
-        style={{ transform: `translateX(-${currentIndex * (100 / itemsToShow)}%)` }}
+        style={{
+          width: containerWidth, // Ajusta a largura do container para o total dos itens
+          transform: `translateX(-${currentIndex * (100 / itemsToShow)}%)`,
+          display: 'flex', // Garante que os itens são alinhados em linha
+        }}
       >
         {products.map((product) => (
           <div
             key={product.id}
             className="flex-shrink-0 cursor-pointer"
-            style={{ width: 'calc(100% / 5 - 16px)', marginRight: '16px' }}
+            style={{
+              width: itemWidth, // Ajuste a largura dos itens
+              marginRight: '16px', // Espaçamento entre os itens
+              flex: `0 0 ${itemWidth}`, // Garante que os itens não encolhem
+            }}
             onClick={() => handleProductClick(product.id)}
           >
             <img
