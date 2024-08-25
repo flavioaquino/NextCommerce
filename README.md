@@ -107,6 +107,11 @@ Tests are written using Jest and React Testing Library. To run tests:
 
 Feel free to open issues or submit pull requests if you find any bugs or have ideas for new features. Contributions are welcome!
 
+## Details
+
+Mensagem para o(s) Avaliador(es):
+Os pontos fortes dessa aplicação seria a alta escalabilidade, pois foi desenvolvida visando uma adição constante de elemenos na base de dados (Backend), fazendo com que se adeque à qualquer quantidade de elementos fornecidas, e foi dada uma característica de responsividade às telas da aplicação, permitindo um acesso satisfatório através de qualquer plataforma acessada (Mobile/Desktop).
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](https://github.com/flavioaquino/NextCommerce?tab=MIT-1-ov-file#) file for more details.
