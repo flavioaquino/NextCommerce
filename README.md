@@ -26,7 +26,7 @@ Ensure you have the following installed on your local machine:
 - Node.js (>= 14.x)
 - npm (>= 6.x) or yarn (>= 1.x)
 
-### Installation
+## Installation
 
 1. Clone the repository:
 
@@ -45,7 +45,7 @@ Ensure you have the following installed on your local machine:
    # or
    yarn install
    ```
-### Running the Application
+## Running the Application
 
 To run the application locally:
 
@@ -56,7 +56,8 @@ To run the application locally:
    ```
    The application will start on http://localhost:3000.
 
-### Building for Production
+## Building for Production
+
 To build the application for production:
 
    ```bash
@@ -64,3 +65,48 @@ To build the application for production:
    # or
    yarn build
    ```
+This will create an optimized build in the .next directory. You can then start the production server:
+
+   ```bash
+   npm start
+   # or
+   yarn start
+   ```
+## Deploying the Application
+
+The application can be easily deployed to platforms like Vercel. Here's how you can do it:
+
+1. Push your code to a Git repository.
+2. Connect your repository to Vercel.
+3. Vercel will automatically build and deploy your application.
+
+## API Integration
+
+This application integrates with the Fake Store API to fetch product data. The API calls are handled using React Query to provide efficient data fetching and caching.
+
+## Project Structure
+
+- **pages/**: Contains the Next.js pages.
+- **components/**: Reusable React components.
+- **styles/**: Component-specific styles using CSS Modules or Styled Components.
+- **hooks/**: Custom hooks for state management and API calls.
+- **utils/**: Utility functions.
+- **public/**: Static assets.
+
+## Testing
+
+Tests are written using Jest and React Testing Library. To run tests:
+  
+   ```bash
+   npm test
+   # or
+   yarn test
+   ```
+
+## Contributing
+
+Feel free to open issues or submit pull requests if you find any bugs or have ideas for new features. Contributions are welcome!
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for more details.
