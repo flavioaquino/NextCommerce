@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { useCart } from '@/app/context/CartContext';
-import Header from '@/app/components/Header';
+import { useCart } from '../../app/context/CartContext';
+import Header from '../../app/components/Header';
 
 const CartPage: React.FC = () => {
   const { cart, removeFromCart, clearCart } = useCart();

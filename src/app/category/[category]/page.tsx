@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import { useParams } from 'next/navigation';
 import { useQuery } from 'react-query';
 import axios from 'axios';
-import Header from '@/app/components/Header';
-import { useCart } from '@/app/context/CartContext';
+import Header from '../../../app/components/Header';
+import { useCart } from '../../../app/context/CartContext';
 import { useRouter } from 'next/navigation';
 
 interface Product {
