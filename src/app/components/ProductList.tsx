@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { fetchProducts } from '@/app/utils/api';
+import { fetchProducts } from '../../app/utils/api';
 
 type Product = {
   id: number;
